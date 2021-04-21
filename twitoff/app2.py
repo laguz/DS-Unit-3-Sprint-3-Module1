@@ -2,7 +2,9 @@
 
 from flask import Flask, render_template
 import json
-from data_model import DB, User, Tweet
+from models import DB, User, Tweet, insert_example_user
+
+print()
 
 
 def create_app():
@@ -14,14 +16,6 @@ def create_app():
 
     @app.route('/')
     def landing():
-        DB.create_all()
-        nick = User(id=1,name="nick")
-        elon = User(id=2,name="elonmusk")
-        app_user = User(id=3,name='app_user')
-        DB.session.add(app_user)
-        DB.session.add(elon)
-        DB.session.add(nick)
-        DB.session.commit()
         args = {'title': "Landing", 'body': "landing body"}
         return render_template("base.html", **args)
 
@@ -31,6 +25,18 @@ def create_app():
         DB.session.add(new_tweet)
         DB.session.commit()
         return render_template("base.html", title="Products", body="products in the body")
+
+    @app.route('/data')
+    def insert_example_user():
+        """We will get an error if we run this twice without droping & creating"""
+        DB.create_all()
+        nick = User(id=1,name="nick")
+        elon = User(id=2,name="elonmusk")
+        DB.session.add(elon)
+        DB.session.add(nick)
+        DB.session.commit()
+        return "It is done"
+
 
     return app
 
