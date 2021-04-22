@@ -1,6 +1,6 @@
 """Main app/routing file for Twitoff"""
 
-from os import getenv
+from os import getenv, path
 from flask import Flask, render_template
 from .models import DB, User, insert_example_users
 
@@ -24,9 +24,10 @@ def create_app():
         #DB.drop_all()
         #DB.create_all()
         # avoiding error since we are dropping all values - no duplicate users
-        insert_example_users()
+        #insert_example_users()
         # renders base.html template and passes down title and users
-        return render_template("base.html", title="home", users=User.query.all())
+        #return render_template("base.html", title="home", users=User.query.all())
+        return "Luis Guzman"
 
     @app.route('/update') # http://127.0.0.1:5000/allusers
     def update():
