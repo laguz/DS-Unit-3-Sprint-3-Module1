@@ -1,8 +1,9 @@
 """Main app/routing file for Twitoff"""
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 from .data_model import DB, User, Tweet
+from .twitter import upsert_user
 
 
 def create_app():
@@ -14,19 +15,21 @@ def create_app():
 
     @app.route('/')
     def landing():
+        DB.drop_all()
         DB.create_all()
         app_user = User(id=1,name='app_user')
         DB.session.add(app_user)
         DB.session.commit()
-        args = {'title': "Landing", 'body': "landing body"}
+        upsert_user("elonmusk")
+        with open('/Users/laguz/Documents/DS-Unit-3-Sprint-3-Module1/twitoff/templates/landing.json') as f:
+            args = json.load(f)
         return render_template("base.html", **args)
 
-    @app.route('/products')
-    def products():
-        new_tweet(id=1, text='tweet', user_id=1)
-        DB.session.add(new_tweet)
-        DB.session.commit()
-        return render_template("base.html", title="Products", body="products in the body")
+    @app.route('/add_user', methods=['GET'])
+    def add_user():
+        twitter_handle = request.args['twitter_handle']
+        upsert_user(twitter_handle)
+        return 'insert successful'
 
     return app
 
