@@ -29,7 +29,13 @@ def create_app():
     def add_user():
         twitter_handle = request.args['twitter_handle']
         upsert_user(twitter_handle)
-        return 'insert successful'
+        return 'insert success'
+
+    @app.route('/reset')
+    def reset():
+        DB.drop_all()
+        DB.create_all()
+        return 'database_refreshed'
 
     return app
 
