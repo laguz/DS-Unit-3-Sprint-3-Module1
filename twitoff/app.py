@@ -16,13 +16,7 @@ def create_app():
 
     @app.route('/')
     def landing():
-        DB.drop_all()
         DB.create_all()
-        app_user = User(id=124003770,name='cher')
-        DB.session.add(app_user)
-        DB.session.commit()
-        upsert_user("elonmusk")
-        upsert_user("barackobama")
         with open('/Users/laguz/Documents/DS-Unit-3-Sprint-3-Module1/twitoff/templates/landing.json') as f:
             args = json.load(f)
         return render_template("base.html", **args)
