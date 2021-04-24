@@ -8,6 +8,10 @@ flask = "*"
 jinja2 = "*"
 flask-sqlalchemy = "*"
 tweepy = "*"
+scikit-learn = "*"
+numpy = "*"
+pandas = "*"
+spacy = "==2.3.5"
 
 [dev-packages]
 
