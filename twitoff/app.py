@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 import json
 from .data_model import DB, User, Tweet
 from .twitter import upsert_user
-#from .ml import predict_most_likely_author
+from .ml import predict_most_likely_author
 
 
 def create_app():
@@ -16,7 +16,11 @@ def create_app():
 
     @app.route('/')
     def landing():
-        DB.create_all()
+        #DB.drop_all()
+        #DB.create_all()
+        #upsert_user("cher")
+        #upsert_user("elonmusk")
+        #upsert_user("barackobama")
         with open('/Users/laguz/Documents/DS-Unit-3-Sprint-3-Module1/twitoff/templates/landing.json') as f:
             args = json.load(f)
         return render_template("base.html", **args)

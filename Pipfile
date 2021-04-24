@@ -11,7 +11,8 @@ tweepy = "*"
 scikit-learn = "*"
 numpy = "*"
 pandas = "*"
-spacy = "==2.3.5"
+spacy = "*"
+sklearn = "*"
 
 [dev-packages]
 
