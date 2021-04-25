@@ -16,11 +16,11 @@ def create_app():
 
     @app.route('/')
     def index():
-        #DB.drop_all()
-        #DB.create_all()
-        #upsert_user("cher")
-        #upsert_user("elonmusk")
-        #upsert_user("barackobama")
+        DB.drop_all()
+        DB.create_all()
+        upsert_user("cher")
+        upsert_user("elonmusk")
+        upsert_user("barackobama")
         return render_template("base.html", title="Home")
 
     @app.route('/add_user', methods=['GET'])
