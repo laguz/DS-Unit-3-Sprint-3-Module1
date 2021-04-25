@@ -21,9 +21,7 @@ def create_app():
         #upsert_user("cher")
         #upsert_user("elonmusk")
         #upsert_user("barackobama")
-        with open('landing.json') as f:
-            args = json.load(f)
-        return render_template("base.html", **args)
+        return render_template("base.html", title="Home")
 
     @app.route('/add_user', methods=['GET'])
     def add_user():
