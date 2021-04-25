@@ -15,16 +15,15 @@ def create_app():
     DB.init_app(app)
 
     @app.route('/')
-    def landing():
+    def index():
         #DB.drop_all()
         #DB.create_all()
         #upsert_user("cher")
         #upsert_user("elonmusk")
         #upsert_user("barackobama")
-        #with open('/Users/laguz/Documents/DS-Unit-3-Sprint-3-Module1/twitoff/templates/landing.json') as f:
         with open('landing.json') as f:
             args = json.load(f)
-        return render_template("base.html", title="Home")
+        return render_template("base.html", **args)
 
     @app.route('/add_user', methods=['GET'])
     def add_user():
