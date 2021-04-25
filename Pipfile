@@ -13,6 +13,7 @@ numpy = "*"
 pandas = "*"
 spacy = "*"
 sklearn = "*"
+gunicorn = "*"
 
 [dev-packages]
 
