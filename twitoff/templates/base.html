@@ -8,7 +8,7 @@
 <body>
 Hello, this is my landing page. How are you doing? {{ body }}
 <br>
-<textarea id="author_text_input">
+<textarea id="author_text_input" type="text" placeholder="Twitter user's handle">
   Twitter user's handle
 </textarea>
 <br>
@@ -17,13 +17,14 @@ Hello, this is my landing page. How are you doing? {{ body }}
 </button>
 <br>
 <br>
-<textarea id="tweet_text_input">
+<textarea id="tweet_text_input" type="text" placeholder="Tweet to classify">
 
 </textarea>
 <br>
 <button id="tweet_submit">
   Classify tweet
 </button>
+<span id="classify_response"></span>
 <br>
 </body>
 <script src="../static/tweet.js"></script>
